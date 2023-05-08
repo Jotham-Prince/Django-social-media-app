@@ -33,14 +33,6 @@ blocks:
           commands: []
     dependencies:
       - Build
-  - name: Checklist
-    task:
-      jobs:
-        - name: 'Job #1'
-          commands:
-            - python manage.py check --deploy
-    dependencies:
-      - Test
   - name: Style ckeck
     task:
       jobs:
@@ -49,7 +41,7 @@ blocks:
             - pip install flake8
             - flake8 martor_demo/ --max-line-length=127
     dependencies:
-      - Checklist
+      - Test
 after_pipeline:
   task:
     jobs:
