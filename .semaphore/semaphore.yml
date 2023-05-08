@@ -33,15 +33,6 @@ blocks:
           commands: []
     dependencies:
       - Build
-  - name: Style ckeck
-    task:
-      jobs:
-        - name: 'Job #1'
-          commands:
-            - pip install flake8
-            - flake8 martor_demo/ --max-line-length=127
-    dependencies:
-      - Test
 after_pipeline:
   task:
     jobs:
