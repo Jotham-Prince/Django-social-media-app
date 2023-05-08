@@ -38,7 +38,6 @@ blocks:
       jobs:
         - name: 'Job #1'
           commands:
-            - cd martor_demo
             - python manage.py check --deploy
     dependencies:
       - Test
