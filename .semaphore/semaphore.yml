@@ -16,6 +16,7 @@ blocks:
             - cache restore
             - pip install --cache-dir .pip_cache -r requirements.txt
             - cache store
+    dependencies: []
   - name: Test
     task:
       prologue:
@@ -31,6 +32,8 @@ blocks:
       jobs:
         - name: 'Job #1'
           commands: []
+    dependencies:
+      - Build
   - name: Checklist
     task:
       jobs:
@@ -38,6 +41,9 @@ blocks:
           commands:
             - cd martor_demo
             - python manage.py check --deploy
+    dependencies:
+      - Build
+      - Test
   - name: Style ckeck
     task:
       jobs:
@@ -45,3 +51,11 @@ blocks:
           commands:
             - pip install flake8
             - flake8 martor_demo/ --max-line-length=127
+    dependencies:
+      - Build
+      - Checklist
+after_pipeline:
+  task:
+    jobs:
+      - name: 'Job #1'
+        commands: []
