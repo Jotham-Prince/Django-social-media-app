@@ -25,7 +25,6 @@ blocks:
           - checkout
           - cache restore
           - pip install --cache-dir .pip_cache -r requirements.txt
-          - cd social_book
           - python manage.py makemigrations
           - python manage.py migrate
           - python manage.py test
@@ -42,7 +41,6 @@ blocks:
             - cd martor_demo
             - python manage.py check --deploy
     dependencies:
-      - Build
       - Test
   - name: Style ckeck
     task:
@@ -52,7 +50,6 @@ blocks:
             - pip install flake8
             - flake8 martor_demo/ --max-line-length=127
     dependencies:
-      - Build
       - Checklist
 after_pipeline:
   task:
