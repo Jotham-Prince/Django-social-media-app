@@ -49,6 +49,7 @@ blocks:
       jobs:
         - name: 'Job #1'
           commands:
+            - cd
             - python manage.py check --deploy
 after_pipeline:
   task:
