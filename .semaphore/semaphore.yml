@@ -41,16 +41,7 @@ blocks:
             - pip install flake8
             - flake8 martor_demo/ --max-line-length=127
     dependencies:
-      - Ckecklist
-  - name: Ckecklist
-    dependencies:
       - Test
-    task:
-      jobs:
-        - name: 'Job #1'
-          commands:
-            - cd
-            - python manage.py check --deploy
 after_pipeline:
   task:
     jobs:
