@@ -33,11 +33,6 @@ blocks:
           commands: []
     dependencies:
       - Build
-after_pipeline:
-  task:
-    jobs:
-      - name: 'Job #1'
-        commands: []
 promotions:
   - name: Dockerize
     pipeline_file: pipeline_2.yml
