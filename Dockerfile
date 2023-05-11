@@ -7,7 +7,8 @@ WORKDIR /Socialapp
 COPY requirements.txt requirements.txt
 COPY . .
 
-RUN pip3 install psycopg2-binary
+#RUN pip3 install psycopg2-binary
+RUN pip3 install --index-url=https://pypi.python.org/simple/ psycopg2-binary
 RUN pip install -r requirements.txt
 
 EXPOSE 8000/tcp
