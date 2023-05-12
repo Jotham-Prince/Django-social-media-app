@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'social_book.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'my_db_name'),
+        'USER': os.environ.get('DB_USER', 'my_db_user'),
+        'PASSWORD': os.environ.get('BD_PASSWORD', 'my_db_password'),
+        'HOST': os.environ.get('DB_HOST', 'my_db_host'),
+        'PORT': os.environ.get('DB_PORT', 'my_db_port'),
     }
 }
 
