@@ -30,7 +30,7 @@ if(len(sys.argv) >= 2 and sys.argv[1] == 'runserver'):
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -134,3 +134,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+'''from django.contrib.auth.models import User
+
+# Create the superuser using environment variables
+if 'DJANGO_SUPERUSER_USERNAME' in os.environ:
+    username = os.environ['DJANGO_SUPERUSER_USERNAME']
+    email = os.environ['DJANGO_SUPERUSER_EMAIL']
+    password = os.environ['DJANGO_SUPERUSER_PASSWORD']
+    if User.objects.filter(username=username).exists():
+        print('Superuser already exists. Skipping creation.')
+    else:
+        User.objects.create_superuser(username=username, email=email, password=password)'''
