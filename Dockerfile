@@ -10,13 +10,8 @@ ENV DJANGO_SUPERUSER_PASSWORD=jotham
 # Set working directory
 WORKDIR /socialapp
 
-# Copy project files
-COPY requirements.txt requirements.txt
-COPY . .
-
-# Install project dependencies
+# Install psycopg2 for postgres DB authentication
 RUN pip3 install --index-url=https://pypi.python.org/simple/ psycopg2-binary
-RUN pip install -r requirements.txt
 
 # Install nginx
 RUN apt-get update && apt-get install -y nginx
@@ -24,8 +19,16 @@ RUN apt-get update && apt-get install -y nginx
 # Copy nginx.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy runserver.sh
-COPY runserver.sh runserver.sh
+# Copy project requirements
+COPY requirements.txt requirements.txt
+
+# Install project dependencies
+RUN pip install -r requirements.txt
+
+# Copy project files
+COPY . .
+
+# Make runserver.sh executable
 RUN chmod +x runserver.sh
 
 # Run migrations and create superuser on container startup
