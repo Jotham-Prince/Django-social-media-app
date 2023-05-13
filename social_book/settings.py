@@ -155,6 +155,8 @@ STORAGES = {
     },
 }
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 '''from django.contrib.auth.models import User
 
 # Create the superuser using environment variables
