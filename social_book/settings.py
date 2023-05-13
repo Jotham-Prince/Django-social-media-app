@@ -31,6 +31,7 @@ DEBUG = True
 else:
     DEBUG = False'''
 
+CSRF_TRUSTED_ORIGINS = ('https://web-production-3fe8.up.railway.app', 'https://jsfsocial-f9c1942e-a5d9-451c-8b9b.cranecloud.io')
 ALLOWED_HOSTS = ["*"]
 
 
