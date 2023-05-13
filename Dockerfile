@@ -8,7 +8,7 @@ ENV DJANGO_SUPERUSER_EMAIL=administrator34@gmail.com
 ENV DJANGO_SUPERUSER_PASSWORD=jotham
 
 # Set working directory
-WORKDIR /socialapp/
+WORKDIR /socialapp
 
 # Install psycopg2 for postgres DB authentication
 RUN pip3 install --index-url=https://pypi.python.org/simple/ psycopg2-binary
@@ -26,7 +26,7 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 # Copy project files
-COPY . /socialapp/.
+COPY . .
 
 # Make runserver.sh executable
 RUN chmod +x runserver.sh
