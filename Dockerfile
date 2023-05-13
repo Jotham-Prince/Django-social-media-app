@@ -32,4 +32,4 @@ COPY . .
 RUN chmod +x runserver.sh
 
 # Run migrations and create superuser on container startup
-CMD ["sh", "-c", "python manage.py makemigrations && python manage.py migrate && python manage.py createsuperuser --noinput && sh runserver.sh"]
+CMD ["sh", "-c", "python manage.py makemigrations && python manage.py migrate && python manage.py createsuperuser --noinput && python manage.py test && sh runserver.sh"]
