@@ -1,35 +1,21 @@
-# Base image
 FROM python:3.8-slim-buster
 
-# Set environment variables
 ENV PYTHONUNBUFFERED=1
-ENV DJANGO_SUPERUSER_USERNAME=Administrator
-ENV DJANGO_SUPERUSER_EMAIL=administrator34@gmail.com
-ENV DJANGO_SUPERUSER_PASSWORD=jotham
 
-# Set working directory
 WORKDIR /socialapp
 
-# Install psycopg2 for postgres DB authentication
-RUN pip3 install --index-url=https://pypi.python.org/simple/ psycopg2-binary
+COPY  requirements.txt requirements.txt
 
-# Install nginx
-RUN apt-get update && apt-get install -y nginx
-
-# Copy nginx.conf
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Copy project requirements
-COPY requirements.txt requirements.txt
-
-# Install project dependencies
 RUN pip install -r requirements.txt
 
-# Copy project files
 COPY . .
 
-# Make runserver.sh executable
-RUN chmod +x runserver.sh
+# VOLUME . /libapp
 
-# Run migrations and create superuser on container startup
-CMD ["sh", "-c", "python manage.py makemigrations && python manage.py migrate && python manage.py createsuperuser --noinput && sh runserver.sh"]
+# RUN apt-get update && apt-get install -y python3
+
+#RUN pip3 install psycopg2-binary
+
+EXPOSE 8000/tcp
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
